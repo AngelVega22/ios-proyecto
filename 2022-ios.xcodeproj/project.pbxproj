@@ -13,6 +13,7 @@
 		4D230FAA283727DE00B6D5A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FA9283727DE00B6D5A2 /* Assets.xcassets */; };
 		4D230FAD283727DE00B6D5A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FAB283727DE00B6D5A2 /* LaunchScreen.storyboard */; };
 		4D3E9A7C28388A19009BD179 /* ConfirmationCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E9A7B28388A19009BD179 /* ConfirmationCodeController.swift */; };
+		4D3E9A7F28389148009BD179 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E9A7E28389148009BD179 /* ChangePasswordViewController.swift */; };
 		928DC4F228374343001070AF /* RegistroViewControlleR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928DC4F128374343001070AF /* RegistroViewControlleR.swift */; };
 		928DC4F9283744DC001070AF /* AccesoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928DC4F8283744DC001070AF /* AccesoViewController.swift */; };
 		FA29665C28372ECF008BB93D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29665B28372ECF008BB93D /* LoginViewController.swift */; };
@@ -28,6 +29,7 @@
 		4D230FAC283727DE00B6D5A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D230FAE283727DE00B6D5A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D3E9A7B28388A19009BD179 /* ConfirmationCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationCodeController.swift; sourceTree = "<group>"; };
+		4D3E9A7E28389148009BD179 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		928DC4F128374343001070AF /* RegistroViewControlleR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroViewControlleR.swift; sourceTree = "<group>"; };
 		928DC4F8283744DC001070AF /* AccesoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccesoViewController.swift; sourceTree = "<group>"; };
 		FA29665B28372ECF008BB93D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				928DC4F128374343001070AF /* RegistroViewControlleR.swift */,
 				928DC4F8283744DC001070AF /* AccesoViewController.swift */,
 				4D3E9A7B28388A19009BD179 /* ConfirmationCodeController.swift */,
+				4D3E9A7E28389148009BD179 /* ChangePasswordViewController.swift */,
 			);
 			path = "2022-ios";
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				928DC4F228374343001070AF /* RegistroViewControlleR.swift in Sources */,
+				4D3E9A7F28389148009BD179 /* ChangePasswordViewController.swift in Sources */,
 				FA29665F28373000008BB93D /* InsertMailViewController.swift in Sources */,
 				928DC4F9283744DC001070AF /* AccesoViewController.swift in Sources */,
 				FA29665C28372ECF008BB93D /* LoginViewController.swift in Sources */,
