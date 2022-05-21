@@ -11,15 +11,26 @@ class InsertMailViewController: UIViewController{
     
     @IBOutlet weak var plainRecupera: UITextField!
     
+    @IBOutlet weak var btnRecupera: UIButton!
     @IBAction private func tapToCloseKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        botonRecuperar()
     }
     
-    func plainRecuperar() {
-        plainRecupera.textColor = .white
+    func botonRecuperar() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor(red:118.0/255.0, green:240.0/255.0, blue:152.0/255.0, alpha: 1.0).cgColor,
+            UIColor(red:157.0/255.0, green:128.0/255.0, blue:251.0/255.0, alpha: 1.0).cgColor]
+        gradient.frame = btnRecupera.bounds
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        btnRecupera.layer.insertSublayer(gradient, at: 0)
+        btnRecupera.layer.cornerRadius = 13
+        btnRecupera.layer.masksToBounds = true
+        btnRecupera.layer.cornerRadius = 12.0
     }
 }
