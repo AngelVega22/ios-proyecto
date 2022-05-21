@@ -12,6 +12,8 @@
 		4D230FA8283727DD00B6D5A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FA6283727DD00B6D5A2 /* Main.storyboard */; };
 		4D230FAA283727DE00B6D5A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FA9283727DE00B6D5A2 /* Assets.xcassets */; };
 		4D230FAD283727DE00B6D5A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FAB283727DE00B6D5A2 /* LaunchScreen.storyboard */; };
+		928DC4F228374343001070AF /* RegistroViewControlleR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928DC4F128374343001070AF /* RegistroViewControlleR.swift */; };
+		928DC4F9283744DC001070AF /* AccesoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928DC4F8283744DC001070AF /* AccesoViewController.swift */; };
 		FA29665C28372ECF008BB93D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29665B28372ECF008BB93D /* LoginViewController.swift */; };
 		FA29665F28373000008BB93D /* InsertMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29665E28373000008BB93D /* InsertMailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +26,8 @@
 		4D230FA9283727DE00B6D5A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D230FAC283727DE00B6D5A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D230FAE283727DE00B6D5A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		928DC4F128374343001070AF /* RegistroViewControlleR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroViewControlleR.swift; sourceTree = "<group>"; };
+		928DC4F8283744DC001070AF /* AccesoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccesoViewController.swift; sourceTree = "<group>"; };
 		FA29665B28372ECF008BB93D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA29665E28373000008BB93D /* InsertMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertMailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +70,8 @@
 				4D230FAE283727DE00B6D5A2 /* Info.plist */,
 				FA29665B28372ECF008BB93D /* LoginViewController.swift */,
 				FA29665E28373000008BB93D /* InsertMailViewController.swift */,
+				928DC4F128374343001070AF /* RegistroViewControlleR.swift */,
+				928DC4F8283744DC001070AF /* AccesoViewController.swift */,
 			);
 			path = "2022-ios";
 			sourceTree = "<group>";
@@ -140,7 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				928DC4F228374343001070AF /* RegistroViewControlleR.swift in Sources */,
 				FA29665F28373000008BB93D /* InsertMailViewController.swift in Sources */,
+				928DC4F9283744DC001070AF /* AccesoViewController.swift in Sources */,
 				FA29665C28372ECF008BB93D /* LoginViewController.swift in Sources */,
 				4D230FA1283727DD00B6D5A2 /* AppDelegate.swift in Sources */,
 				4D230FA3283727DD00B6D5A2 /* SceneDelegate.swift in Sources */,
