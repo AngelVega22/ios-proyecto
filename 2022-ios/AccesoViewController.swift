@@ -5,4 +5,10 @@
 //  Created by user194383 on 5/19/22.
 //
 
-import Foundation
+import UIKit
+
+class AccesoViewController: UIViewController{
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
