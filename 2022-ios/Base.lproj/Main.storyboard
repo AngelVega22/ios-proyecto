@@ -440,13 +440,13 @@
                     <navigationItem key="navigationItem" id="mem-67-oYp"/>
                     <connections>
                         <outlet property="btnRegistrar" destination="1TG-X5-5LM" id="yDj-5j-KIB"/>
-                        <outlet property="viewRegistra" destination="chA-Fv-nlY" id="K2D-FP-1ZR"/>
+                        <outlet property="viewRegistra" destination="RnR-vd-ztS" id="oSK-5W-dK6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yX-uo-4ta" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Fwi-tr-1wm">
+                <tapGestureRecognizer id="94t-hg-7kH">
                     <connections>
-                        <action selector="tapToCloseKeyboard:" destination="EYg-cA-BKR" id="vOr-ca-tK2"/>
+                        <action selector="tapToCloseKeyboard:" destination="EYg-cA-BKR" id="GCP-cL-YYk"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
