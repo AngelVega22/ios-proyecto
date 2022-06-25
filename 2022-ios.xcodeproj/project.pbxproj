@@ -12,9 +12,6 @@
 		4D230FA8283727DD00B6D5A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FA6283727DD00B6D5A2 /* Main.storyboard */; };
 		4D230FAA283727DE00B6D5A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FA9283727DE00B6D5A2 /* Assets.xcassets */; };
 		4D230FAD283727DE00B6D5A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FAB283727DE00B6D5A2 /* LaunchScreen.storyboard */; };
-		4D3E9A7C28388A19009BD179 /* ConfirmationCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E9A7B28388A19009BD179 /* ConfirmationCodeController.swift */; };
-		4D3E9A7F28389148009BD179 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E9A7E28389148009BD179 /* ChangePasswordViewController.swift */; };
-		928DC4F9283744DC001070AF /* AccesoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928DC4F8283744DC001070AF /* AccesoViewController.swift */; };
 		FA29665C28372ECF008BB93D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29665B28372ECF008BB93D /* LoginViewController.swift */; };
 		FA29665F28373000008BB93D /* InsertMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29665E28373000008BB93D /* InsertMailViewController.swift */; };
 		FA3D07F728610D3900EDFC5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3D07F628610D3900EDFC5D /* GoogleService-Info.plist */; };
@@ -36,9 +33,6 @@
 		4D230FA9283727DE00B6D5A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D230FAC283727DE00B6D5A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D230FAE283727DE00B6D5A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D3E9A7B28388A19009BD179 /* ConfirmationCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationCodeController.swift; sourceTree = "<group>"; };
-		4D3E9A7E28389148009BD179 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
-		928DC4F8283744DC001070AF /* AccesoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccesoViewController.swift; sourceTree = "<group>"; };
 		FA29665B28372ECF008BB93D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA29665E28373000008BB93D /* InsertMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertMailViewController.swift; sourceTree = "<group>"; };
 		FA3D07F628610D3900EDFC5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -91,9 +85,6 @@
 				4D230FAE283727DE00B6D5A2 /* Info.plist */,
 				FA29665B28372ECF008BB93D /* LoginViewController.swift */,
 				FA29665E28373000008BB93D /* InsertMailViewController.swift */,
-				928DC4F8283744DC001070AF /* AccesoViewController.swift */,
-				4D3E9A7B28388A19009BD179 /* ConfirmationCodeController.swift */,
-				4D3E9A7E28389148009BD179 /* ChangePasswordViewController.swift */,
 				FA4A5FF128389F7500EEE414 /* RegisterViewController.swift */,
 			);
 			path = "2022-ios";
@@ -182,14 +173,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D3E9A7F28389148009BD179 /* ChangePasswordViewController.swift in Sources */,
 				FA29665F28373000008BB93D /* InsertMailViewController.swift in Sources */,
-				928DC4F9283744DC001070AF /* AccesoViewController.swift in Sources */,
 				FA4A5FF228389F7500EEE414 /* RegisterViewController.swift in Sources */,
 				FA29665C28372ECF008BB93D /* LoginViewController.swift in Sources */,
 				4D230FA1283727DD00B6D5A2 /* AppDelegate.swift in Sources */,
 				4D230FA3283727DD00B6D5A2 /* SceneDelegate.swift in Sources */,
-				4D3E9A7C28388A19009BD179 /* ConfirmationCodeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
