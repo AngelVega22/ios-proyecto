@@ -12,9 +12,10 @@ import FirebaseStorage
 
 class RegisterViewController: UIViewController, UITextFieldDelegate{
     
-    
+
     @IBOutlet weak var viewRegistra: UIImageView!
-    
+    @IBOutlet private weak var anchorCenterContentY: NSLayoutConstraint!
+
     @IBAction private func tapToCloseKeyboard(_ sender: UITapGestureRecognizer) {
             self.view.endEditing(true)
         }
@@ -28,7 +29,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var imageProfile: UIImageView!
     
     var imagePicker:UIImagePickerController!
-
+    var imagePro: UIImage!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,8 +45,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
         btnRegister.layer.cornerRadius = 13
         btnRegister.layer.masksToBounds = true
         btnRegister.layer.cornerRadius = 12.0
-        
-        btnRegister.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         setRegisterButton(enabled: false)
 
         
@@ -53,30 +54,43 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
         viewRegistra.layer.shadowOpacity = 0.45
         
         
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
+        imageProfile.isUserInteractionEnabled = true
+        imageProfile.addGestureRecognizer(imageTap)
+        imageProfile.layer.cornerRadius = imageProfile.bounds.height / 2
+        imageProfile.clipsToBounds = true
+
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        
+        
         nameTextF.delegate = self
         lastNameTextF.delegate = self
         emailTextF.delegate = self
         passwordTextF.delegate = self
-
+        
         
         nameTextF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         lastNameTextF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         emailTextF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         passwordTextF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-
         
-        let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
-        imageProfile.isUserInteractionEnabled = true
-        imageProfile.addGestureRecognizer(imageTap)
-        
-        imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = true
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
     }
     
     @objc func openImagePicker(_ sender:Any) {
         self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.registerKeyabordNotification()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.unregisterKeyboardNotification()
     }
     
     @objc func textFieldChanged(_ target:UITextField) {
@@ -99,93 +113,68 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
         }
     }
     
-    @objc func handleSignUp() {
+    @IBAction func registerAction(_ sender: Any) {
         guard let name = nameTextF.text else { return }
         guard let lastname = lastNameTextF.text else { return }
         guard let email = emailTextF.text else { return }
         guard let password = passwordTextF.text else { return }
-        guard let image = imageProfile.image else { return }
-        
-        setRegisterButton(enabled: false)
-        Auth.auth().createUser(withEmail: email, password: password) { user, error in
-            if error == nil && user != nil {
-                print("Usuario creado")
-                    
-                self.uploadProfileImage(image) { url in
-                    
-                    if url != nil {
-                        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                        changeRequest?.displayName = name
-                        changeRequest?.displayName = lastname
-                        changeRequest?.photoURL = url
-                        
-                        changeRequest?.commitChanges { error in
-                            if error == nil {
-                                print("User display name changed!")
-                                
-                                self.saveProfile(name: name, lastname: lastname, profileImageURL: url!) { success in
-                                    if success {
-                                        self.dismiss(animated: true, completion: nil)
-                                    }
-                                }
-                                
-                            } else {
-                                print("Error: \(error!.localizedDescription)")
-                            }
-                        }
-                    } else {
-                    }
-                }
-                
-            } else {
-                print("Error: \(error!.localizedDescription)")
-            }
-        }
-    }
-    
-    
-    func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        guard let image = self.imagePro else { return }
 
         guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
 
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-
-        storageRef.putData(imageData, metadata: metaData) { metaData, error in
-            if error == nil, metaData != nil {
-                storageRef.downloadURL(completion: { (url, error) in print(url ?? 0)
-                    if error != nil {
-                        completion(nil)
-                    } else {
-                        completion(url?.absoluteURL)
-                    }
-                    })
-            } else {
-                // failed
-                completion(nil)
+        setRegisterButton(enabled: false)
+        Auth.auth().createUser(withEmail: email, password: password){(authDataResult, error) in
+            if error != nil{
+                return
             }
+
+            if let authData = authDataResult{
+                print(authData.user.uid)
+                var user = [
+                    "uid": authData.user.uid,
+                    "email": authData.user.email,
+                    "userImageUrl": "",
+                    "nombres": name,
+                    "apellidos": lastname
+                ]
+
+            let storageRef = Storage.storage().reference(forURL: "gs://fir-caralibro.appspot.com")
+            let storageUserRef = storageRef.child("usuarios").child(authData.user.uid)
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpg"
+            storageUserRef.putData(imageData, metadata: metadata, completion: {(storageMetaData, error) in
+                if error != nil{
+                    print("Error: \(error!.localizedDescription)")
+                    return
+                }
+                
+            //La foto de perfil es obligatoria
+
+            storageUserRef.downloadURL(completion: { (url, error) in
+                if let metaImageUrl = url?.absoluteString{ user["userImageUrl"] = metaImageUrl
+                    Database.database().reference().child("usuarios").child(authData.user.uid).updateChildValues(user as [AnyHashable : Any], withCompletionBlock: {(error, ref) in
+                            if error == nil{
+                                print("Guardado")
+                                let message = UIAlertController (title: "Mensaje", message:
+                                    "Usuario registrado correctamente", preferredStyle: .alert)
+                                message.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                                self.present(message, animated: true, completion:
+                                nil)
+                                self.setRegisterButton(enabled: false)
+                                self.nameTextF.text = ""
+                                self.lastNameTextF.text = ""
+                                self.emailTextF.text = ""
+                                self.passwordTextF.text = ""
+                            }
+                        })
+                    }
+                })
+            })
         }
     }
-        
-    
-    
-    func saveProfile(name:String,lastname:String,profileImageURL:URL, completion: @escaping ((_ success:Bool)->())) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let databaseRef = Database.database().reference().child("users/profile/\(uid)")
-        
-        let userObject = [
-            "name": name,
-            "lastname": lastname,
-            "photoURL": profileImageURL.absoluteString
-        ] as [String:Any]
-        
-        databaseRef.setValue(userObject) { error, ref in
-            completion(error == nil)
-        }
-    }
+ }
 }
+
 
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -193,17 +182,64 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         picker.dismiss(animated: true, completion: nil)
     }
     
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage.rawValue] as? UIImage {
-            self.imageProfile.image = pickedImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+            if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                imagePro = imageSelected
+                imageProfile.image = imageSelected
+            }
+            if let imageOriginal = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                imagePro = imageOriginal
+                imageProfile.image = imageOriginal
+            }
+            picker.dismiss(animated: true, completion: nil)
         }
         
-        picker.dismiss(animated: true, completion: nil)
-    }
     
     
 }
 
+extension RegisterViewController {
     
+    private func registerKeyabordNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+        
+    }
+    
+    private func unregisterKeyboardNotification() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        
+        let animationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0
+        let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect ?? .zero
+        
+        if keyboardFrame.origin.y < self.viewRegistra.frame.maxY {
+            
+            UIView.animate(withDuration: animationDuration) {
+                self.anchorCenterContentY.constant = keyboardFrame.origin.y - self.viewRegistra.frame.maxY
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        
+        let animationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0
+        
+        UIView.animate(withDuration: animationDuration) {
+            self.anchorCenterContentY.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+}
+
     
