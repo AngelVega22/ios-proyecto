@@ -7,13 +7,13 @@
 
 class UserModel {
     
-    var nombres: String?
-    var apellidos: String?
+    var name: String?
+    var lastName: String?
     var userImageUrl: String?
     
-    init(nombres: String?, apellidos: String?, userImageUrl: String?){
-        self.nombres = nombres
-        self.apellidos = apellidos
+    init(name: String?, lastName: String?, userImageUrl: String?){
+        self.name = name
+        self.lastName = lastName
         self.userImageUrl = userImageUrl
     }
 }
