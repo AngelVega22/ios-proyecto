@@ -78,14 +78,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().signIn(withEmail: email, password: pass) { user, error in
             if error == nil && user != nil {
                 self.dismiss(animated: false, completion: nil)
-                let message = UIAlertController (title: "Mensaje", message:
-                    "Usuario ingresado correctamente", preferredStyle: .alert)
-                message.addAction(UIAlertAction(title: "Aceptar", style: .default))
-                self.present(message, animated: true, completion:
-                nil)
-                self.setLoginButton(enabled: false)
-                self.emailTextF.text = ""
-                self.passwordTextF.text = ""
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+                mainTabBarController.modalPresentationStyle = .fullScreen
+                self.present(mainTabBarController, animated: true, completion: nil)
+                
             } else {
                 print("Error logging in: \(error!.localizedDescription)")
                 let error = UIAlertController (title: "Error", message:
