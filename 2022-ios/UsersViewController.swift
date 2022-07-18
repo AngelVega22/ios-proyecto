@@ -9,6 +9,8 @@ import UIKit
 
 class UsersViewController: UIViewController {
     
+    @IBOutlet weak var userlbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

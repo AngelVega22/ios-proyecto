@@ -12,6 +12,7 @@
 		4D230FA8283727DD00B6D5A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FA6283727DD00B6D5A2 /* Main.storyboard */; };
 		4D230FAA283727DE00B6D5A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FA9283727DE00B6D5A2 /* Assets.xcassets */; };
 		4D230FAD283727DE00B6D5A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FAB283727DE00B6D5A2 /* LaunchScreen.storyboard */; };
+		7C07B8F72885877200327079 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C07B8F62885877200327079 /* UserModel.swift */; };
 		7C2A23F92884E402006CD989 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A23F82884E402006CD989 /* UsersViewController.swift */; };
 		7C2A23FC2884E57A006CD989 /* SelectedUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A23FB2884E57A006CD989 /* SelectedUserViewController.swift */; };
 		7C2A23FF2884E5CF006CD989 /* ActiveChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A23FE2884E5CE006CD989 /* ActiveChatsViewController.swift */; };
@@ -38,6 +39,7 @@
 		4D230FA9283727DE00B6D5A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D230FAC283727DE00B6D5A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D230FAE283727DE00B6D5A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C07B8F62885877200327079 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		7C2A23F82884E402006CD989 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		7C2A23FB2884E57A006CD989 /* SelectedUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserViewController.swift; sourceTree = "<group>"; };
 		7C2A23FE2884E5CE006CD989 /* ActiveChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatsViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				7C2A23FB2884E57A006CD989 /* SelectedUserViewController.swift */,
 				7C2A23FE2884E5CE006CD989 /* ActiveChatsViewController.swift */,
 				7C2A24012884E5FB006CD989 /* ChatViewController.swift */,
+				7C07B8F62885877200327079 /* UserModel.swift */,
 			);
 			path = "2022-ios";
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				4D230FA1283727DD00B6D5A2 /* AppDelegate.swift in Sources */,
 				7C2A24022884E5FB006CD989 /* ChatViewController.swift in Sources */,
 				4D230FA3283727DD00B6D5A2 /* SceneDelegate.swift in Sources */,
+				7C07B8F72885877200327079 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
