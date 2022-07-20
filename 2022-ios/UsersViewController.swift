@@ -28,7 +28,9 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         user = userList[indexPath.row]
         
         cell.userlbl.text = user.name! + " " + user.lastName!
-                
+        cell.profileImage.load(URLAddress: user.userImageUrl!)
+        cell.profileImage.layer.cornerRadius = cell.profileImage.bounds.height / 2
+
         return cell
     }
 
@@ -50,8 +52,9 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let userName  = userObject?["nombres"]
                     let userLastName  = userObject?["apellidos"]
                     let userImageUrl = userObject?["userImageUrl"]
+                    let userUid = userObject?["uid"]
                     
-                    let user = UserModel(name: userName as! String?, lastName: userLastName as! String?, userImageUrl: userImageUrl as! String?)
+                    let user = UserModel(name: userName as! String?, lastName: userLastName as! String?, userImageUrl: userImageUrl as! String?, uid: userUid as! String?)
                     
                     self.userList.append(user)
                 }
@@ -60,6 +63,29 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         })
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        let user = userList[indexPath.row]
+        if segue.identifier == "passSegue"{
+            let selectedUser = segue.destination as! SelectedUserViewController
+            selectedUser.uid = user.uid ?? ""
+        }
+    }
+}
+extension UIImageView {
+    func load(URLAddress: String) {
+        guard let url = URL(string: URLAddress) else {
+            return
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let loadedImage = UIImage(data: imageData) {
+                        self?.image = loadedImage
+                }
+            }
+        }
     }
 }
 
