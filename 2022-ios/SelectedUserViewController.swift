@@ -10,36 +10,29 @@ import Firebase
 import FirebaseStorage
 
 class SelectedUserViewController: UIViewController {
-    var uid = ""
+    
+    var name: String = ""
+    var lastname: String = ""
+    var email: String = ""
+    var userImageUrl: String = ""
     
     @IBOutlet weak var fullNamelbl: UILabel!
     @IBOutlet weak var correolbl: UILabel!
     @IBOutlet weak var infolbl: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        Database.database().reference().child("usuarios").child(uid).observeSingleEvent(of: .value,  with: {
-              (snapshot) in
-               print("1")
-            if (snapshot.value as? [String: AnyObject]) != nil {
-                    print("2")
-                let nombres = (snapshot.value as! NSDictionary)["nombres"] as! String
-                let apellidos = (snapshot.value as! NSDictionary)["apellidos"] as! String
-                let correo = (snapshot.value as! NSDictionary)["email"] as! String
-                let imageUrl = (snapshot.value as! NSDictionary)["userImageUrl"] as! String
-                
-                self.fullNamelbl.text = nombres + " " + apellidos
-                self.correolbl.text = correo
-                self.infolbl.text = "¡Hola! soy " + nombres
-                
-                self.profileImage.loadImage(URLAddress: imageUrl)
-                self.profileImage.layer.cornerRadius = self.profileImage.bounds.height / 2
-               }
-        }, withCancel: nil)
         
+        fullNamelbl.text = name + " " + lastname
+        correolbl.text = email
+        infolbl.text = "¡Hola! soy " + name
+        profileImage.loadImage(URLAddress: userImageUrl)
+        profileImage.layer.cornerRadius = self.profileImage.bounds.height / 2
     }
     
     override func viewDidLoad() {

@@ -11,9 +11,23 @@ import Firebase
 class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
 
+    @IBOutlet weak var searchUser: UITextField!
     @IBOutlet weak var tblUsers: UITableView!
     
     var userList = [UserModel]()
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user  = userList[indexPath.row]
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SelectedUserViewController") as? SelectedUserViewController{
+            vc.name = user.name!
+            vc.lastname = user.lastName!
+            vc.email = user.email!
+            vc.userImageUrl = user.userImageUrl!
+
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return userList.count
@@ -52,9 +66,9 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let userName  = userObject?["nombres"]
                     let userLastName  = userObject?["apellidos"]
                     let userImageUrl = userObject?["userImageUrl"]
-                    let userUid = userObject?["uid"]
+                    let userEmail = userObject?["email"]
                     
-                    let user = UserModel(name: userName as! String?, lastName: userLastName as! String?, userImageUrl: userImageUrl as! String?, uid: userUid as! String?)
+                    let user = UserModel(name: userName as! String?, lastName: userLastName as! String?, userImageUrl: userImageUrl as! String?, email: userEmail as! String?)
                     
                     self.userList.append(user)
                 }
@@ -65,13 +79,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        let user = userList[indexPath.row]
-        if segue.identifier == "passSegue"{
-            let selectedUser = segue.destination as! SelectedUserViewController
-            selectedUser.uid = user.uid ?? ""
-        }
-    }
 }
 extension UIImageView {
     func load(URLAddress: String) {
