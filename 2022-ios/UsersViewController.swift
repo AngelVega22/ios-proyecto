@@ -8,14 +8,16 @@
 import UIKit
 import Firebase
 
-class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchResultsUpdating {
     
-
-    @IBOutlet weak var searchUser: UITextField!
+    
+    let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var tblUsers: UITableView!
     
     var userList = [UserModel]()
-    
+    var filteredUsers = [UserModel]()
+    var searching = false
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user  = userList[indexPath.row]
         if let vc = storyboard?.instantiateViewController(withIdentifier: "SelectedUserViewController") as? SelectedUserViewController{
@@ -30,20 +32,31 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
      }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        
+        if searching
+        {
+            return filteredUsers.count
+        }
         return userList.count
     }
     
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
+                
+        if searching
+        {
+            cell.userlbl.text = filteredUsers[indexPath.row].name! + " " + filteredUsers[indexPath.row].lastName!
+            cell.profileImage.load(URLAddress: filteredUsers[indexPath.row].userImageUrl!)
+            cell.profileImage.layer.cornerRadius = cell.profileImage.bounds.height / 2
+        }
+        else
+        {
+            cell.userlbl.text = userList[indexPath.row].name! + " " + userList[indexPath.row].lastName!
+            cell.profileImage.load(URLAddress: userList[indexPath.row].userImageUrl!)
+            cell.profileImage.layer.cornerRadius = cell.profileImage.bounds.height / 2
+        }
         
-        let user: UserModel
-        
-        user = userList[indexPath.row]
-        
-        cell.userlbl.text = user.name! + " " + user.lastName!
-        cell.profileImage.load(URLAddress: user.userImageUrl!)
-        cell.profileImage.layer.cornerRadius = cell.profileImage.bounds.height / 2
 
         return cell
     }
@@ -51,7 +64,8 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initSearchController()
+
         let refUsers = Database.database().reference().child("usuarios")
         
         refUsers.observe(DataEventType.value, with: { (snapshot) in
@@ -79,6 +93,55 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    func initSearchController()
+    {
+        searchController.loadViewIfNeeded()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        searchController.searchBar.placeholder = "Busca entre tu lista de contactos"
+        searchController.searchBar.backgroundColor = UIColor.purpleColor
+        searchController.searchBar.searchBarStyle = .minimal
+        definesPresentationContext = true
+        
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        filteredUsers.removeAll()
+        tblUsers.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController)
+    {
+        let searchText = searchController.searchBar.text!
+        if !searchText.isEmpty
+        {
+            searching = true
+            filteredUsers.removeAll()
+            for user in userList
+            {
+                let username = user.name! + " " + user.lastName!
+                if username.lowercased().contains(searchText.lowercased())
+                {
+                    filteredUsers.append(user)
+                }
+            }
+        }
+        else
+        {
+            searching = false
+            filteredUsers.removeAll()
+            filteredUsers = userList
+        }
+        
+        tblUsers.reloadData()
+    }
+    
 }
 extension UIImageView {
     func load(URLAddress: String) {
@@ -95,5 +158,7 @@ extension UIImageView {
         }
     }
 }
-
+extension UIColor {
+  static let purpleColor: UIColor = UIColor(named: "Purple")!
+}
 

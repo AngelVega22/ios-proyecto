@@ -20,9 +20,6 @@ class SelectedUserViewController: UIViewController {
     @IBOutlet weak var correolbl: UILabel!
     @IBOutlet weak var infolbl: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
-    @IBAction func btnBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
     
     
     override func viewWillAppear(_ animated: Bool) {
