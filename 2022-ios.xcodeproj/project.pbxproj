@@ -14,11 +14,9 @@
 		4D230FAD283727DE00B6D5A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D230FAB283727DE00B6D5A2 /* LaunchScreen.storyboard */; };
 		7C07B8F72885877200327079 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C07B8F62885877200327079 /* UserModel.swift */; };
 		7C07B8FA28858C3200327079 /* ViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C07B8F928858C3200327079 /* ViewControllerTableViewCell.swift */; };
-		7C2A23F92884E402006CD989 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A23F82884E402006CD989 /* UsersViewController.swift */; };
 		7C2A23FC2884E57A006CD989 /* SelectedUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A23FB2884E57A006CD989 /* SelectedUserViewController.swift */; };
 		7C2A23FF2884E5CF006CD989 /* ActiveChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A23FE2884E5CE006CD989 /* ActiveChatsViewController.swift */; };
 		7C2A24022884E5FB006CD989 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A24012884E5FB006CD989 /* ChatViewController.swift */; };
-		7CBF0AA12883F568006AF5A8 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF0AA02883F568006AF5A8 /* MyProfileViewController.swift */; };
 		FA29665C28372ECF008BB93D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29665B28372ECF008BB93D /* LoginViewController.swift */; };
 		FA29665F28373000008BB93D /* InsertMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29665E28373000008BB93D /* InsertMailViewController.swift */; };
 		FA3D07F728610D3900EDFC5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3D07F628610D3900EDFC5D /* GoogleService-Info.plist */; };
@@ -42,11 +40,9 @@
 		4D230FAE283727DE00B6D5A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C07B8F62885877200327079 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		7C07B8F928858C3200327079 /* ViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTableViewCell.swift; sourceTree = "<group>"; };
-		7C2A23F82884E402006CD989 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		7C2A23FB2884E57A006CD989 /* SelectedUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserViewController.swift; sourceTree = "<group>"; };
 		7C2A23FE2884E5CE006CD989 /* ActiveChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatsViewController.swift; sourceTree = "<group>"; };
 		7C2A24012884E5FB006CD989 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		7CBF0AA02883F568006AF5A8 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		FA29665B28372ECF008BB93D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA29665E28373000008BB93D /* InsertMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertMailViewController.swift; sourceTree = "<group>"; };
 		FA3D07F628610D3900EDFC5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -100,8 +96,6 @@
 				FA29665B28372ECF008BB93D /* LoginViewController.swift */,
 				FA29665E28373000008BB93D /* InsertMailViewController.swift */,
 				FA4A5FF128389F7500EEE414 /* RegisterViewController.swift */,
-				7CBF0AA02883F568006AF5A8 /* MyProfileViewController.swift */,
-				7C2A23F82884E402006CD989 /* UsersViewController.swift */,
 				7C2A23FB2884E57A006CD989 /* SelectedUserViewController.swift */,
 				7C2A23FE2884E5CE006CD989 /* ActiveChatsViewController.swift */,
 				7C2A24012884E5FB006CD989 /* ChatViewController.swift */,
@@ -194,11 +188,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CBF0AA12883F568006AF5A8 /* MyProfileViewController.swift in Sources */,
 				FA29665F28373000008BB93D /* InsertMailViewController.swift in Sources */,
 				7C07B8FA28858C3200327079 /* ViewControllerTableViewCell.swift in Sources */,
 				FA4A5FF228389F7500EEE414 /* RegisterViewController.swift in Sources */,
-				7C2A23F92884E402006CD989 /* UsersViewController.swift in Sources */,
 				7C2A23FC2884E57A006CD989 /* SelectedUserViewController.swift in Sources */,
 				7C2A23FF2884E5CF006CD989 /* ActiveChatsViewController.swift in Sources */,
 				FA29665C28372ECF008BB93D /* LoginViewController.swift in Sources */,
