@@ -7,7 +7,7 @@
 
 import UIKit
 import Firebase
-
+ 
 class InsertMailViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction private func tapToCloseKeyboard(_ sender: UITapGestureRecognizer) {
