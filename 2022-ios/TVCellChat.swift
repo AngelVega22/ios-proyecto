@@ -11,6 +11,7 @@ class TVCellChat: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var fullname: UILabel!
     @IBOutlet weak var messagepv: UILabel!
+    @IBOutlet weak var time: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
