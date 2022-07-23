@@ -45,6 +45,36 @@ class ActiveChatsViewController: UIViewController, UITableViewDelegate, UITableV
         })
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userUid = messagesList[indexPath.row].toId
+        var userName = ""
+        var userLastName = ""
+        var userImageUrl = ""
+        var userEmail = ""
+        
+        let ref = Database.database().reference().child("usuarios").child(userUid!)
+        ref.observeSingleEvent(of: .value, with: { (snapshot)
+            in
+            if let users = snapshot.value as? [String: AnyObject]
+            {
+                userName  = (users["nombres"] as? String)!
+                userLastName  = (users["apellidos"] as? String)!
+                userImageUrl = (users["userImageUrl"] as? String)!
+                userEmail = (users["email"] as? String)!
+            }
+        },withCancel: nil)
+        
+        let chatVC = self.storyboard?.instantiateViewController(identifier: "ChatViewController") as! ChatViewController
+        chatVC.uid = userUid!
+        chatVC.name = userName
+        chatVC.lastname = userLastName
+        chatVC.imageUrl = userImageUrl
+        
+        self.navigationController?.pushViewController(chatVC, animated: true)
+
+     }
+
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return messagesList.count
     }
