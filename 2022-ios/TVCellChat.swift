@@ -1,17 +1,16 @@
 //
-//  ViewControllerTableViewCell.swift
+//  TVCellChat.swift
 //  2022-ios
 //
-//  Created by user190700 on 7/18/22.
+//  Created by user190700 on 7/22/22.
 //
 
 import UIKit
 
-class ViewControllerTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var userlbl: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!    
-    @IBOutlet weak var loadMessage: UIButton!
+class TVCellChat: UITableViewCell {
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var fullname: UILabel!
+    @IBOutlet weak var messagepv: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

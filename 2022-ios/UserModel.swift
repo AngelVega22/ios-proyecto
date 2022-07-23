@@ -11,11 +11,13 @@ class UserModel {
     var lastName: String?
     var userImageUrl: String?
     var email: String?
+    var uid: String?
     
-    init(name: String?, lastName: String?, userImageUrl: String?, email: String?){
+    init(name: String?, lastName: String?, userImageUrl: String?, email: String?, uid: String?){
         self.name = name
         self.lastName = lastName
         self.userImageUrl = userImageUrl
         self.email = email
+        self.uid = uid
     }
 }
